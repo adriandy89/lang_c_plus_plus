@@ -65,21 +65,33 @@ int main()
 	int i = 0;
 	while (i < 5)
 	{
-		cout << "The value of i is: " << i << endl;
 		i++;
+		if (i == 3)
+		{
+			continue;
+		}
+		cout << "The value of i is: " << i << endl;
 	}
 
 	// do while loop
 	i = 0;
 	do
 	{
-		cout << "The value of i is: " << i << endl;
 		i++;
+		if (i == 3)
+		{
+			break;
+		}
+		cout << "The value of i is: " << i << endl;
 	} while (i < 5);
 
 	// for loop
 	for (int j = 0; j < 5; j++)
 	{
+		if (j == 3)
+		{
+			continue;
+		}
 		cout << "The value of j is: " << j << endl;
 	}
 
