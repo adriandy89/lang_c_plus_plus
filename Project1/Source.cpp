@@ -23,6 +23,21 @@ int square(int x)
 }
 
 // class and hineritance example
+class baseClass
+{
+public:
+	int w;
+	baseClass(int w)
+	{
+		this->w = w;
+	}
+	baseClass() : w(0) {} // Default constructor
+	void print()
+	{
+		cout << "The value of w is: " << w << endl;
+	}
+};
+
 class myClass
 {
 public:
@@ -38,6 +53,11 @@ public:
 	{
 		cout << "The value of x is: " << x << endl;
 		cout << "The value of y is: " << y << endl;
+	}
+	// override example
+	virtual void hello() const
+	{
+		cout << "Hello from myClass!" << endl;
 	}
 };
 
@@ -56,6 +76,36 @@ public:
 		cout << "The value of x is: " << x << endl;
 		cout << "The value of y is: " << y << endl;
 		cout << "The value of z is: " << z << endl;
+	}
+	// override example
+	void hello() const override
+	{
+		cout << "Hello from myClass2!" << endl;
+	}
+};
+// multiple inheritance example
+class myClass3 : public myClass, public baseClass
+{
+public:
+	int z;
+	myClass3(int x, int y, int z, int w) : myClass(x, y), baseClass(w) // Call base class constructor
+	{
+		this->x = x;
+		this->y = y;
+		this->z = z;
+		this->w = w;
+	}
+	void print() const // Made const
+	{
+		cout << "The value of x is: " << x << endl;
+		cout << "The value of y is: " << y << endl;
+		cout << "The value of z is: " << z << endl;
+		cout << "The value of w is: " << w << endl;
+	}
+	// override example
+	void hello() const override
+	{
+		cout << "Hello from myClass3!" << endl;
 	}
 };
 
@@ -314,8 +364,20 @@ int main()
 	// myClass and myClass2 example
 	myClass myObject(100, 200);
 	myObject.print();
+	myObject.hello();
 	myClass2 myObject2(300, 400, 500);
 	myObject2.print();
+	myObject2.hello();
+	// myClass3 example
+	myClass3 myObject3(600, 700, 800, 900);
+	myObject3.print();
+
+	// dynamic memory allocation
+	int* myPointer4 = new int;
+	*myPointer4 = 100;
+	cout << "The value of myPointer4 is: " << *myPointer4 << endl;
+	delete myPointer4;
+	myPointer4 = nullptr;
 	
 	cout << "Bye!\n";
 
