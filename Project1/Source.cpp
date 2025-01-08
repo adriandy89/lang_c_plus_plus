@@ -378,6 +378,54 @@ int main()
 	cout << "The value of myPointer4 is: " << *myPointer4 << endl;
 	delete myPointer4;
 	myPointer4 = nullptr;
+
+	// array dynamic memory allocation
+	int* myArray3 = new int[5];
+	for (int i = 0; i < 5; i++)
+	{
+		myArray3[i] = i * 10;
+		cout << "The value of myArray3[" << i << "] dynamic memory allocation is: " << myArray3[i] << endl;
+	}
+	delete[] myArray3;
+	myArray3 = nullptr;
+
+	// casting examples
+	float myFloat2 = 100.5f;
+	int myInt11 = static_cast<int>(myFloat2);
+	cout << "The value of myInt11 is: " << myInt11 << endl;
+	// const_cast example
+	const int myConst2 = 200;
+	int* myPointer5 = const_cast<int*>(&myConst2);
+	*myPointer5 = 300;
+	cout << "The value of myConst2 is:" << myConst2 << endl;
+	cout << "The value of *myPointer5 is: " << *myPointer5 << endl;
+	// reinterpret_cast example
+	int myInt12 = 400;
+	float* myPointer6 = reinterpret_cast<float*>(&myInt12);
+	cout << "The value of myInt12 is: " << myInt12 << endl;
+	cout << "The value of *myPointer6 is: " << *myPointer6 << endl;
+	// dynamic_cast example
+	myClass* myObject4 = new myClass2(500, 600, 700);
+	myObject4->print();
+	myObject4->hello();
+	myClass2* myObject5 = dynamic_cast<myClass2*>(myObject4);
+	myObject5->print();
+	myObject5->hello();
+	delete myObject4;
+
+	// exception handling
+	try
+	{
+		int myInt10 = 0;
+		if (myInt10 == 0)
+		{
+			throw myInt10;
+		}
+	}
+	catch (int myInt10)
+	{
+		cout << "The value of myInt10 is: " << myInt10 << endl;
+	}
 	
 	cout << "Bye!\n";
 
